@@ -1,17 +1,27 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = (data) => {
-   toast("Successfully submitted!");
-  // alert("Form Data: " + JSON.stringify(data, null, 2));
+
+
+  const onSubmit: SubmitHandler<FormData> = (data: FormData) => {
+    console.log('data=>', data)
+    toast("Successfully submitted!");
   };
+
+
 
   return (
     <section id="contact" className="bg-c3 h-[1020px] flex justify-center items-center p-6">
@@ -42,7 +52,7 @@ const ContactForm = () => {
                 {...register("name", { required: "Full Name is required" })}
                 className="w-full p-3 border-b-2 text-white border-b-white border-white focus:border-white outline-none"
               />
-              {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
+              {typeof errors?.name?.message==='string' && <p className="text-red-500 text-sm">{errors.name.message}</p>}
             </div>
 
             <div>
@@ -58,7 +68,7 @@ const ContactForm = () => {
                 })}
                 className="w-full p-3 border-b-2  text-white border-b-white border-white focus:border-white outline-none"
               />
-              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+              {typeof errors.email?.message === 'string' && (<p className="text-red-500 text-sm">{errors.email.message}</p>)}
             </div>
 
             <div>
@@ -68,7 +78,7 @@ const ContactForm = () => {
                 {...register("subject", { required: "Subject is required" })}
                 className="w-full p-3 border-b-2  text-white border-b-white border-white focus:border-white outline-none"
               />
-              {errors.subject && <p className="text-red-500 text-sm">{errors.subject.message}</p>}
+               {typeof errors.subject?.message === "string" && <p className="text-red-500 text-sm">{errors.subject.message}</p>}
             </div>
 
             <div>
@@ -77,7 +87,9 @@ const ContactForm = () => {
                 {...register("message", { required: "Message is required" })}
                 className="w-full p-3 border-b-2  text-white border-b-white border-white focus:border-white outline-none"
               ></input>
-              {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
+              {typeof errors.message?.message === "string" && (
+                <p className="text-red-500 text-sm">{errors.message.message}</p>
+              )}
             </div>
 
             {/* Submit Button */}
