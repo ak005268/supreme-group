@@ -1,12 +1,13 @@
 import logo from '../../assets/images/footer-logo.svg';
 
+
 const Footer = () => {
   return (
     <footer
-      className="h-auto bg-cover bg-center text-center md:text-left px-[20%]"
-      style={{ backgroundImage: "url('/assets/images/footer-bg.jpg')" }}
+      className="h-auto  bg-[url('/footer-bg.jpg')] bg-cover bg-center text-center md:text-left px-[20%]"
+
     >
-      <div className="container mt-[162px]">
+      <div className="container animation mt-[162px]">
         <div className="flex justify-center md:justify-start mb-6">
           <img src={logo} alt="Company Logo" className="w-24 md:w-32" />
         </div>
@@ -48,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='lg:flex my-20 lg:justify-between'>
+        <div className='lg:flex py-20 lg:justify-between'>
 
         <div className="text-sm lg:hidden text-center ">
             ©2024 All Rights Reserved.
