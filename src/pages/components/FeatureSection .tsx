@@ -39,7 +39,7 @@ type SelectedVideo = 'passenger' | 'commercial';
 
 const FeatureSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<SelectedVideo>('passenger');
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0); 
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -71,8 +71,10 @@ const FeatureSection = () => {
   }, [isPlaying]);
 
   const handleImageSelect = (index: number, video: string) => {
-    setSelectedImageIndex(index); 
-    videoRef.current.src = video; 
+    setSelectedImageIndex(index);
+    if (videoRef.current) {
+      videoRef.current.src = video;
+    }
   };
 
   return (
