@@ -4,7 +4,7 @@ import logo from '../../assets/images/footer-logo.svg';
 const Footer = () => {
   return (
     <footer
-      className="h-auto  bg-[url('/footer-bg.jpg')] bg-cover bg-center text-center md:text-left px-[20%]"
+      className="h-auto  bg-[url('/footer-bg.jpg')] bg-cover bg-center text-center md:text-left px-4 sm:px-6 lg:px-10 xl:px-[15%] 2xl:px-[20%]"
 
     >
       <div className="container animation mt-[162px]">

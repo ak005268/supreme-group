@@ -80,22 +80,23 @@ const FeatureSection = () => {
   return (
     <div ref={sectionRef} className="bg-black h-[1020px] relative">
       <div className="flex flex-col items-center pt-10">
-        <p className="font-light text-[28px] lg:text-[48px] text-white text-center">
+        <p className="font-light text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-white text-center">
           Evolving the drive with 360-degree
         </p>
-        <p className="font-light text-[28px] lg:text-[48px] text-white text-center">
+        <p className="font-light text-[28px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-white text-center">
           nonwoven solutions
         </p>
       </div>
 
-      <div className="hidden lg:grid grid-cols-[35%_65%] relative">
-        <div className="cards-wrp pl-14 self-center ml-[15%] relative 2xl:ml-[25%] 2xl:py-10 py-5 flex flex-col">
+      <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] relative">
+        {/* Left section */}
+        <div className="cards-wrp pl-14 sm:pl-8 md:pl-10 self-center ml-[15%] relative 2xl:ml-[25%] 2xl:py-10 py-5 flex flex-col">
           <button
             onClick={() => setSelectedVideo("passenger")}
             className={`text-white pb-20 transition-all duration-300 ease-in-out ${selectedVideo === "passenger" ? "font-bold text-xl" : "opacity-60"}`}
           >
-            <h1 className="font-medium text-left pb-2">Passenger vehicles</h1>
-            <h2 className="font-light text-left text-lg">
+            <h1 className="font-medium text-left pb-2 text-sm md:text-base lg:text-lg">Passenger vehicles</h1>
+            <h2 className="font-light text-left text-lg md:text-xl lg:text-2xl">
               Revving up innovation from <br />
               interior to exterior.
             </h2>
@@ -104,8 +105,8 @@ const FeatureSection = () => {
             onClick={() => setSelectedVideo("commercial")}
             className={`text-white pb-20 transition-all duration-300 ease-in-out ${selectedVideo === "commercial" ? "font-bold text-xl" : "opacity-60"}`}
           >
-            <h1 className="font-medium text-left pb-2">Commercial vehicles</h1>
-            <h2 className="font-light text-left text-lg">
+            <h1 className="font-medium text-left pb-2 text-sm md:text-base lg:text-lg">Commercial vehicles</h1>
+            <h2 className="font-light text-left text-lg md:text-xl lg:text-2xl">
               Advancing engineering <br />
               for heavy-duty vehicles.
             </h2>
@@ -122,6 +123,7 @@ const FeatureSection = () => {
           </div>
         </div>
 
+        {/* Right section (Video player) */}
         <div className="relative flex items-center">
           <div className="video-slide-1 self-center mx-auto relative">
             <video
@@ -130,7 +132,7 @@ const FeatureSection = () => {
               autoPlay
               playsInline
               loop
-              className="w-auto max-h-[360px] min-h-[230px] 2xl:h-[40vh] h-24 fade-show-enter-done transition-all duration-500 ease-in-out"
+              className="w-auto max-h-[360px] min-h-[230px] sm:max-h-[300px] lg:h-[40vh] h-24 fade-show-enter-done transition-all duration-500 ease-in-out"
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
             >
@@ -151,9 +153,10 @@ const FeatureSection = () => {
         </div>
       </div>
 
+      {/* Image selection controls */}
       <div className="hidden lg:flex justify-end items-center relative w-container">
         <div className="flex justify-center w-[640px] xl:w-[720px] 2xl:w-[900px] relative">
-          <div className="grid grid-cols-5 controls-slide-1">
+          <div className="grid grid-cols-5 gap-2">
             {images[selectedVideo].map((image, index) => (
               <button
                 key={index}
@@ -165,9 +168,9 @@ const FeatureSection = () => {
                 <img
                   src={image.image}
                   alt={image.title}
-                  className="max-h-16 pt-1 2xl:max-h-20"
+                  className="max-h-16 sm:max-h-18 md:max-h-20 xl:max-h-24 pt-1"
                 />
-                <span className={`sg-translate -mt-1 text-sm 2xl:text-base ${selectedImageIndex === index ? 'text-white' : 'text-gray-400'}`}>
+                <span className={`sg-translate -mt-1 text-sm md:text-base ${selectedImageIndex === index ? 'text-white' : 'text-gray-400'}`}>
                   {image.title}
                 </span>
               </button>
